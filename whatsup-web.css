@@ -46,6 +46,10 @@ padding: 3px;
 color: #00008B;
 }
 
+.btn {
+  margin-left: 15px;
+}
+
 .jumbotron {
 background-color: #FFFFE5;
 padding: 15px;
@@ -57,3 +61,4 @@ padding: 3px;
 text-align: center;
 color: #00008B;
 }
+

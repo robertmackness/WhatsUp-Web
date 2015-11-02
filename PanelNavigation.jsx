@@ -17,7 +17,7 @@ render() {
         </h1>
       </div>
       <div className="panel-body img-rounded">
-        <nav class="navbar navbar-default">
+        <nav class="navbar navbar-default panelNavigationButtons">
           <button type="button" className="btn btn-primary navbar-btn" 
                                 onClick={this.setNavOption1}>
             Friends
@@ -31,7 +31,7 @@ render() {
             Global Chat
           </button>
         </nav>
-        <p>{this.state.navOption}</p>
+        <p>This will render #{this.state.navOption} of 3 possible options dependant on nav button pressed above</p>
       </div>
     </div>
   );
