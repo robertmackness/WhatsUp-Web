@@ -14,14 +14,39 @@ body {
   margin: 0;
 
   font-size: 14px;
+  color: #00008B;
+}
+.container {
+  padding: 3px;
+}
+
+.panel-default .panel-heading {
+  background-color: #FFB76E;
+  color: #00008B;
+  text-align: center;
 }
 
 .panelChat {
-background-color: #6699FF;
-background-image: linear-gradient(to bottom, #315481, #6699FF 100%);
+background-color: #FFFFE5;
+padding: 3px;
+color: #00008B;
 }
 
 .panelNavigation {
-background-color: #FFCC99;
-background-image: linear-gradient(to bottom, #315481, #FFCC99 100%);
+background-color: #FFFFE5;
+padding: 3px;
+color: #00008B;
+}
+
+.jumbotron {
+background-color: #FFFFE5;
+padding: 15px;
+}
+
+.jumbotron .panelJumbotron {
+background-color: #FFB76E;
+padding: 3px;
+text-align: center;
+color: #00008B;
+
 }
