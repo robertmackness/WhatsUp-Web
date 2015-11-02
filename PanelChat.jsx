@@ -7,7 +7,7 @@ render() {
                         panel panel-default">
       <div className="panel-heading img-rounded">
         <h1 className="h1">
-          Panel Chat
+          Conversations
         </h1>
       </div>
       <div className="panel-body img-rounded">

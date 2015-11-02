@@ -20,6 +20,14 @@ body {
   padding: 3px;
 }
 
+.row {
+   padding: 3px;
+}
+
+.accountsUIWrapper {
+  background-color: #FFFFE5;
+  text-align: center;
+}
 .panel-default .panel-heading {
   background-color: #FFB76E;
   color: #00008B;
@@ -48,5 +56,4 @@ background-color: #FFB76E;
 padding: 3px;
 text-align: center;
 color: #00008B;
-
 }

@@ -7,14 +7,24 @@ render() {
                         panel panel-default">
       <div className="panel-heading img-rounded">
         <h1 className="h1">
-          Panel Navigation
+          Navigation
         </h1>
       </div>
       <div className="panel-body img-rounded">
-        Navigation goes here
+        { this.getCurrentPanel() }
       </div>
     </div>
   );
+},
+
+getCurrentPanel() {
+
+  if (!Meteor.user()){
+    return <p>Please sign-in or sign-up</p>
+  };
+
+  return <p>Logged in</p>;
+
 }
 
 });
