@@ -1,11 +1,11 @@
-App = React.createClass ( {
-
-// Mixins
-// For React accessing data from MongoDB via Meteor
-  mixins: [ReactMeteorData]
+App = React.createClass({
 
   render() {
-    
+    return(
+        <div className="container">
+          <Dashboard />
+        </div>
+    );
   }
 
 });

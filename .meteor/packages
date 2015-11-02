@@ -20,4 +20,4 @@ autopublish             # Publish all data to the clients (for prototyping)
 react
 accounts-ui
 accounts-password
-bootstrap
+twbs:bootstrap
