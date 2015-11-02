@@ -1,5 +1,11 @@
 PanelNavigation = React.createClass({
 
+ getInitialState() {
+    return { 
+      navOption : 1
+    };
+  },
+
 render() {
   return(
     <div className="col-md-4 col-sm-4 
@@ -11,20 +17,41 @@ render() {
         </h1>
       </div>
       <div className="panel-body img-rounded">
-        { this.getCurrentPanel() }
+        <nav class="navbar navbar-default">
+          <button type="button" className="btn btn-primary navbar-btn" 
+                                onClick={this.setNavOption1}>
+            Friends
+          </button>
+          <button type="button" className="btn btn-warning navbar-btn" 
+                                onClick={this.setNavOption2}>
+            Conversations
+          </button>
+          <button type="button" className="btn btn-success navbar-btn"  
+                                onClick={this.setNavOption3}>
+            Global Chat
+          </button>
+        </nav>
+        <p>{this.state.navOption}</p>
       </div>
     </div>
   );
 },
 
-getCurrentPanel() {
-
-  if (!Meteor.user()){
-    return <p>Please sign-in or sign-up</p>
-  };
-
-  return <p>Logged in</p>;
-
+setNavOption1(){
+  this.replaceState({
+      navOption : 1
+    });
+},
+setNavOption2(){
+  this.replaceState({
+      navOption : 2
+    });
+},
+setNavOption3(){
+  this.replaceState({
+      navOption : 3
+    });
 }
 
 });
+
