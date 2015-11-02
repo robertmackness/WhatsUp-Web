@@ -18,7 +18,7 @@ render() {
       </div>
       <div className="panel-body img-rounded">
         <nav class="navbar navbar-default panelNavigationButtons">
-          <button type="button" className="btn btn-primary navbar-btn" 
+          <button type="button" className="btn btn-warning navbar-btn" 
                                 onClick={this.setNavOption1}>
             Friends
           </button>
@@ -26,12 +26,12 @@ render() {
                                 onClick={this.setNavOption2}>
             Conversations
           </button>
-          <button type="button" className="btn btn-success navbar-btn"  
+          <button type="button" className="btn btn-warning navbar-btn"  
                                 onClick={this.setNavOption3}>
             Global Chat
           </button>
         </nav>
-        <p>This will render #{this.state.navOption} of 3 possible options dependant on nav button pressed above</p>
+        <p>Currently rendering #{this.state.navOption} of 3 possible options</p>
       </div>
     </div>
   );
