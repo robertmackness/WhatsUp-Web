@@ -17,14 +17,10 @@ AccountsUIWrapper = React.createClass({
     return (
       <div ref="accountsUIcontainer"
             className="accountsUIWrapper 
-              col-md-5 col-sm-5
+              col-md-4 col-sm-4
                 img-rounded">
-        { Meteor.user() ?
-              (<span> Welcome, </span>
-              ) : <span> Sign in or Sign up to view your conversations! </span>
-        }
+        <span> Welcome, </span>
       </div>
-
     );
   }
 });
