@@ -26,10 +26,6 @@ render() {
                                 onClick={this.setNavOption2}>
             Conversations
           </button>
-          <button type="button" className="btn btn-warning navbar-btn"  
-                                onClick={this.setNavOption3}>
-            Global Chat
-          </button>
         </nav>
         <p>Currently rendering #{this.state.navOption} of 3 possible options</p>
       </div>
@@ -38,18 +34,13 @@ render() {
 },
 
 setNavOption1(){
-  this.replaceState({
+  this.setState({
       navOption : 1
     });
 },
 setNavOption2(){
-  this.replaceState({
+  this.setState({
       navOption : 2
-    });
-},
-setNavOption3(){
-  this.replaceState({
-      navOption : 3
     });
 }
 
