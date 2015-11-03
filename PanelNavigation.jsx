@@ -8,7 +8,7 @@ PanelNavigation = React.createClass({
 
 render() {
   return(
-    <div className="col-md-4 col-sm-4 
+    <div className="col-sm-4 
                       panelNavigation img-rounded
                         panel panel-default">
       <div className="panel-heading img-rounded">

@@ -16,9 +16,7 @@ AccountsUIWrapper = React.createClass({
     // Just render a placeholder container that will be filled in
     return (
       <div ref="accountsUIcontainer"
-            className="accountsUIWrapper 
-              col-md-4 col-sm-4
-                img-rounded">
+            className="accountsUIWrapper col-sm-4 img-rounded">
         <span> Welcome, </span>
       </div>
     );

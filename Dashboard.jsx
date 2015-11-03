@@ -3,14 +3,14 @@ Dashboard = React.createClass({
   render() {
     // Render Dashboard components
     return (
-      <div className="container-fluid">
-        <div className="jumbotron col-md-12 col-sm-12">
+      <div className="container container-full">
+        <div className="jumbotron col-sm-12">
           <PanelJumbotron />
         </div>
-        <div className="row">
+        <div className="row ">
           <AccountsUIWrapper />
         </div>
-        <div className="row">
+        <div className="row row-panels">
           <PanelNavigation />
           <PanelChat />
         </div>
