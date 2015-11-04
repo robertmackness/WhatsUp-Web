@@ -1,14 +1,18 @@
 Dashboard = React.createClass({
   
+
+  renderUsers() {
+    return this.props.users.map((user) => {
+          return <UsernameTab user={user.username} />;
+        });
+   },
+
   render() {
     // Render Dashboard components
     return (
       <div className="container container-full">
-        <div className="jumbotron col-sm-12">
-          <PanelJumbotron />
-        </div>
         <div className="row ">
-          <AccountsUIWrapper />
+          {this.renderUsers()}
         </div>
         <div className="row row-panels">
           <PanelNavigation />

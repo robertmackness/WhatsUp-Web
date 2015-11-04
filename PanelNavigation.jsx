@@ -2,46 +2,38 @@ PanelNavigation = React.createClass({
 
  getInitialState() {
     return { 
-      navOption : 1
+      searchTerm: "",
+
     };
+  },
+
+  setSearchTerm(term){
+    this.setState({
+      searchTerm: term
+    });
   },
 
 render() {
   return(
-    <div className="col-sm-4 
-                      panelNavigation img-rounded
-                        panel panel-default">
-      <div className="panel-heading img-rounded">
-        <h1 className="h1">
-          Navigation
-        </h1>
+    <div className="col-sm-4 panel-navigation panel panel-default">
+      
+      <div className="panel-headings row">
+        <div className="panel-navigation-buttons">
+          <AccountsUIWrapper />
+        </div>
       </div>
+
       <div className="panel-body img-rounded">
-        <nav class="navbar navbar-default panelNavigationButtons">
-          <button type="button" className="btn btn-warning navbar-btn" 
-                                onClick={this.setNavOption1}>
-            Friends
-          </button>
-          <button type="button" className="btn btn-warning navbar-btn" 
-                                onClick={this.setNavOption2}>
-            Conversations
-          </button>
-        </nav>
-        <p>Currently rendering #{this.state.navOption} of 3 possible options</p>
+        <div className="row">
+          <SearchBar setSearch={this.setSearchTerm} />
+        </div>
+        <div>
+          {this.state.searchTerm}
+        </div>
       </div>
+
     </div>
   );
-},
-
-setNavOption1(){
-  this.setState({
-      navOption : 1
-    });
-},
-setNavOption2(){
-  this.setState({
-      navOption : 2
-    });
 }
 
 });

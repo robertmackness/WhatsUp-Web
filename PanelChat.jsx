@@ -21,19 +21,18 @@ newMessageArray.push(newMessage);
 
 render() {
   return(
-    <div className="col-sm-8 
-                      panelChat img-rounded
-                        panel panel-default">
-      <div className="panel-heading img-rounded">
+    <div className="col-sm-8 panel-chat panel panel-default">
+      <div className="panel-headings">
         <h1 className="h1">
-          Conversations
+          Conversation with some dude
         </h1>
+        <p>Last seen today at xx:xx</p> 
       </div>
       <div className="panel-body img-rounded ">
-        <Conversation messages={this.state.messages} />
+        <p>{this.state.messages}</p>
       </div>
-      <div className="PanelChatInput">
-        <PanelChatBar onChatSubmit={this.handleInput.bind(this)}></PanelChatBar>
+      <div className="panel-chat-input">
+        <PanelChatBar onChatSubmit={this.handleInput}></PanelChatBar>
       </div>
     </div>
   );
