@@ -30,4 +30,4 @@ if (Meteor.isClient) {
 // need to be used to access the data store.
 Meteor.methods({
 
-)};
+});

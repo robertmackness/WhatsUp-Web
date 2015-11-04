@@ -22,13 +22,33 @@ body {
 }
 
 .row {
-   padding: 3px;
+
 }
 
-.accountsUIWrapper {
-  background-color: #FFFF00;
-  text-align: center;
+.col-sm-4 {
+  padding: 0px;
+  border: 0px;
+}
+
+
+/** 
+  #################################################
+  ###### PANEL STYLING ############################
+  #################################################
+*/
+
+.row-panels {
+  height: 800px;
+}
+
+.panel-headings {
+  background-color: #eeeeee;
   color: #434343;
+  text-align: right;
+  width: 100%;
+  height: 60px;
+  margin: 0 auto;
+
 }
 .panel-default .panel-heading {
   background-color: rgba(0, 0, 0, 0.5);
@@ -39,14 +59,69 @@ body {
 
 .panel-default .h1 {
 margin: 0px;
+padding: 0px;
+}
+
+.panel {
+  margin: 0px;
+  padding: 0px;
+  border: 1px solid #dbdbdb;
+}
+
+/** 
+  ###### PANEL STYLING - NAVIGATION ############################
+*/
+.panel-navigation {
+background-color: #ffffff;
+color: #434343;
+height: 100%;
+}
+
+.accounts-ui-wrapper {
+  background-color: #eeeeee;
+  background-image: url("profileBubble.png");
+  background-repeat: no-repeat;
+  background-size: 40px 40px;
+  background-position: 5% center;
+  text-align: left;
+  padding-left: 65px;
+  color: black;
+  height: 100%;
+  width: 100%;
+}
+
+#login-buttons{
+  margin-top: 20px;
+}
+
+.panel-navigation-buttons{
+height: 100%;
+}
+
+.search-panel-row{
+  margin: 0px;
+  height: 49px;
+  background-color: #fbfbfb;
+}
+.search-bar {
+  height: 94%;
+  width: 94%;
+  text-align: left;
+  margin: 3%;
+  font-size: 14px;
+  border: 1px solid #eeeeee;
+  background-image: url("searchGlyph.png");
+  background-repeat: no-repeat;
+  background-position: left;
+  padding-left: 45px;
 }
 
 
-.panelChat {
-background-color: rgba(0, 0, 0, 0.5);
-padding: 3px;
-color: #FFFF00;
-height: 500px;
+.panel-chat {
+background-color: #ede9e4;
+background-image: url("chatBackground.png");
+color: #434343;
+height: 100%;
 }
 
 .new-message {
@@ -58,13 +133,58 @@ margin-right: 2%;
 margin-bottom: 10px;
 }
 
-.PanelChatInput{
+/** 
+  ###### PANEL STYLING - CHAT ############################
+*/
+
+#render-target > div > div > div.row.row-panels > div.col-sm-8.panel-chat.panel.panel-default > div.panel-headings {
+  background-image: url("conversationBubble.png");
+  background-repeat: no-repeat;
+  background-size: 40px 40px;
+  background-position: 5% center;
+}
+
+.temporary-panel-chat-details{
+padding:10px 10px 10px 80px;
+}
+
+#render-target > div > div > div.row.row-panels > div.col-sm-8.panel-chat.panel.panel-default > div.panel-headings > div > p{
+font-size: 12px !important;
+}
+
+.temporary-panel-chat-header{
+margin-top: 10px;
+font-size: 16px !important;
+}
+
+.panel-chat {
+background-color: #ede9e4;
+background-image: url("chatBackground.png");
+color: #434343;
+height: 100%;
+}
+
+#render-target > div > div > div.row.row-panels > div.col-sm-8.panel-chat.panel.panel-default > div.panel-headings {
+  text-align: left;
+}
+
+#render-target > div > div > div.row.row-panels > div.col-sm-8.panel-chat.panel.panel-default > div.panel-headings > p{
+  font-size: 14px;
+}
+
+.panel-chat .img {
+  opacity: 0.6;
+}
+
+.panel-chat-input{
+width: 100%;
+padding: 0px;
+height: 60px;
+background-color: #eeeeee;
 position: absolute;
 bottom: 0;
-right: 0;
-width: 100%;
-padding: 3px;
 }
+
 
 .panelNavigation {
 background-color: rgba(0, 0, 0, 0.5);
@@ -73,21 +193,22 @@ color: #FFFF00;
 height: 500px;
 }
 
+.new-message {
+  width: 96%;
+  height: 40px;
+  background-color: #ffffff;
+  color: #434343;
+  margin-left: 2%;
+  margin-right: 2%;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  font-size: 14px;
+  border: none;
+  padding-left: 45px;
+}
+
 .btn {
   margin-left: 15px;
   background-color: #FFFF00;
   color: #282828;
 }
-
-.jumbotron {
-background-color: rgba(0, 0, 0, 0.5);
-padding: 15px;
-}
-
-.jumbotron .panelJumbotron {
-background-color: rgba(0, 0, 0, 0.5);
-padding: 10px;
-text-align: right;
-color: #FFFF00;
-}
-

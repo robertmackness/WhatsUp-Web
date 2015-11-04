@@ -1,57 +1,67 @@
 PanelNavigation = React.createClass({
 
+  // Allow this React component to interact with MongoDB via Meteor
+  mixins: [ReactMeteorData],
+
+  getMeteorData(){
+
+
+    var regexString = this.state.searchTerm;
+    var regexQuery = new RegExp("^"+regexString);
+
+    if(this.state.searchTerm === ""){
+      return {
+        users: Meteor.users.find({username: 11959563956})
+      };
+    }
+
+    return {
+        users: Meteor.users.find({username: {$regex: regexQuery, $options: 'i'}}).fetch()
+    }
+
+  },
+
  getInitialState() {
     return { 
-      navOption : 1
+      searchTerm: "",
+
     };
+  },
+
+  setSearchTerm(term){
+    this.setState({
+      searchTerm: term
+    });
+    this.forceUpdate();
+  },
+
+  renderSearchResults(){
+    return this.data.users.map(user => {
+      return <UsernameTab user={user.username} />
+    });
   },
 
 render() {
   return(
-    <div className="col-sm-4 
-                      panelNavigation img-rounded
-                        panel panel-default">
-      <div className="panel-heading img-rounded">
-        <h1 className="h1">
-          Navigation
-        </h1>
+    <div className="col-sm-4 panel-navigation panel panel-default">
+      
+      <div className="panel-headings row">
+        <div className="panel-navigation-buttons">
+          <AccountsUIWrapper />
+        </div>
       </div>
+
       <div className="panel-body img-rounded">
-        <nav class="navbar navbar-default panelNavigationButtons">
-          <button type="button" className="btn btn-warning navbar-btn" 
-                                onClick={this.setNavOption1}>
-            Friends
-          </button>
-          <button type="button" className="btn btn-warning navbar-btn" 
-                                onClick={this.setNavOption2}>
-            Conversations
-          </button>
-          <button type="button" className="btn btn-warning navbar-btn"  
-                                onClick={this.setNavOption3}>
-            Global Chat
-          </button>
-        </nav>
-        <p>Currently rendering #{this.state.navOption} of 3 possible options</p>
+        <div className="row">
+          <SearchBar setSearch={this.setSearchTerm} />
+        </div>
+        <div>
+          {this.renderSearchResults()}
+        </div>
       </div>
+
     </div>
   );
-},
-
-setNavOption1(){
-  this.replaceState({
-      navOption : 1
-    });
-},
-setNavOption2(){
-  this.replaceState({
-      navOption : 2
-    });
-},
-setNavOption3(){
-  this.replaceState({
-      navOption : 3
-    });
 }
 
 });
-
