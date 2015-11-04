@@ -3,7 +3,7 @@ PanelChatBar = React.createClass ({
 handleSubmit(event){
   event.preventDefault();
 
-  var newMessage = "" + Meteor.user().username + ": " + React.findDOMNode(this.refs.newMessage).value;
+  var newMessage = "" + Meteor.user().username + ": " + ReactDOM.findDOMNode(this.refs.newMessage).value;
   this.props.onChatSubmit(newMessage);
   
   React.findDOMNode(this.refs.newMessage).value = "";

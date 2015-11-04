@@ -34,3 +34,4 @@ if (Meteor.isClient) {
 Meteor.methods({
 
 });
+
