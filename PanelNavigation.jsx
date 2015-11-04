@@ -51,7 +51,7 @@ render() {
         </div>
       </div>
 
-      <div className="panel-body img-rounded">
+      <div className="panel-body" id="search-bar-container">
         <div className="row">
           <SearchBar setSearch={this.setSearchTerm} />
         </div>

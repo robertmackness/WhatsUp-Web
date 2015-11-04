@@ -36,6 +36,10 @@ body {
   border: 0px;
 }
 
+* {
+  border-radius: 0 !important;
+}
+
 
 /** 
   #################################################
@@ -79,6 +83,10 @@ padding: 0px;
 background-color: #ffffff;
 color: #434343;
 height: 100%;
+}
+
+#search-bar-container{
+ background-color: #fbfbfb;
 }
 
 .accounts-ui-wrapper {
