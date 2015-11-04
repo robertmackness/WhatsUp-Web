@@ -1,5 +1,26 @@
 PanelNavigation = React.createClass({
 
+  // Allow this React component to interact with MongoDB via Meteor
+  mixins: [ReactMeteorData],
+
+  getMeteorData(){
+
+
+    var regexString = this.state.searchTerm;
+    var regexQuery = new RegExp("^"+regexString);
+
+    if(this.state.searchTerm === ""){
+      return {
+        users: Meteor.users.find({username: 11959563956})
+      };
+    }
+
+    return {
+        users: Meteor.users.find({username: {$regex: regexQuery, $options: 'i'}}).fetch()
+    }
+
+  },
+
  getInitialState() {
     return { 
       searchTerm: "",
@@ -10,6 +31,13 @@ PanelNavigation = React.createClass({
   setSearchTerm(term){
     this.setState({
       searchTerm: term
+    });
+    this.forceUpdate();
+  },
+
+  renderSearchResults(){
+    return this.data.users.map(user => {
+      return <UsernameTab user={user.username} />
     });
   },
 
@@ -28,7 +56,7 @@ render() {
           <SearchBar setSearch={this.setSearchTerm} />
         </div>
         <div>
-          {this.state.searchTerm}
+          {this.renderSearchResults()}
         </div>
       </div>
 
