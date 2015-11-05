@@ -1,0 +1,52 @@
+
+user {
+      	_id,
+	username,
+	currentConversationId: conversationId
+     }
+
+message {
+	_id,
+	owner: userId,
+	text: textInput,
+	conversation: conversationId,
+	createdAt: new Date()
+	}
+
+conversation {
+	_id,
+	owners: [userId,userId2]
+	title,
+	participants: [owner, userId2, userId3],
+	groupChat: true/false
+	      }
+
+##################################
+search results:
+##################################
+user.onClick returns conversation where participants contains both currentUserId and targetUserId.
+	* There will only ever be one of these conversations by nature of the query
+
+conversation.onClick sets the currentUser.currentConversationId to that conversation, changing the underlying data model.
+	* mixin [reactMeteorData] will notice the change and call render() on the chat pane which is
+	  watching the currentUser.currentConversationId in getMeteorData()
+
+##################################
+chatPane.body:
+##################################
+uses the currentUser.currentConversationId to query the Messages collection for all messages where conversation: currentUser.currentConversationId. Sorts by createdAt time ascending.
+
+if message.owner is currentUser then populate a messageBubbleMe component, else populate a messageBubbleThem
+
+##################################
+test db seed
+##################################
+
+db.conversations.insert({owners: ["rd9XLhoNAwxuYFDmk", "eYQud2osj9E9JqR2z"], title: "THE Manifest", participants:["rd9XLhoNAwxuYFDmk", "eYQud2osj9E9JqR2z"] });
+
+
+db.messages.insert({owner: "rd9XLhoNAwxuYFDmk", text: "Hello", conversation: ObjectId("563b37602207ac14ffa8bb74"), createdAt: 1});
+
+db.messages.insert({owner: "rd9XLhoNAwxuYFDmk", text: "Omg it werkz", conversation: ObjectId("563b37602207ac14ffa8bb74"), createdAt: 2});
+
+db.messages.insert({owner: "eYQud2osj9E9JqR2z", text: "Testing 1 2 3", conversation: ObjectId("563b37602207ac14ffa8bb74"), createdAt: 3});

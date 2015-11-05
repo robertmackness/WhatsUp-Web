@@ -4,19 +4,18 @@ PanelNavigation = React.createClass({
   mixins: [ReactMeteorData],
 
   getMeteorData(){
-
-
     var regexString = this.state.searchTerm;
     var regexQuery = new RegExp("^"+regexString);
 
     if(this.state.searchTerm === ""){
       return {
-        users: Meteor.users.find({username: 11959563956})
+        users: Meteor.users.find({username: 9999999999999999999999999})
       };
     }
 
     return {
-        users: Meteor.users.find({username: {$regex: regexQuery, $options: 'i'}}).fetch()
+        users: Meteor.users.find({username: {$regex: regexQuery, $options: 'i'}}).fetch(),
+        conversations: Conversations.find({title: {$regex: regexQuery, $options: 'i'}}).fetch(),
     }
 
   },
@@ -24,7 +23,6 @@ PanelNavigation = React.createClass({
  getInitialState() {
     return { 
       searchTerm: "",
-
     };
   },
 
@@ -37,8 +35,27 @@ PanelNavigation = React.createClass({
 
   renderSearchResults(){
     return this.data.users.map(user => {
-      return <UsernameTab user={user.username} />
+      return <UsernameTab user={user} 
+                    setCurrentConversation={this.setCurrentPrivateConversationId} />
     });
+  },
+
+  setCurrentPrivateConversationId(partnerUserId){
+    var partner = partnerUserId;
+    var currentUser = Meteor.userId();
+
+    conversationId = "Empty";
+    var conversationId = Conversations.find( { $and: [
+                                                      {participants: { $in: [partner]}}, 
+                                                      {participants: { $in: [currentUser]}}
+                                                      ],
+                                              groupChat: false
+                                              },
+                                              {limit: 1}
+                                            ).fetch();
+
+    console.log(conversationId);
+    conversationId = "Empty";
   },
 
 render() {
