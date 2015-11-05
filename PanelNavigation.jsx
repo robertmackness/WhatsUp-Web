@@ -5,7 +5,7 @@ PanelNavigation = React.createClass({
 
   getMeteorData(){
     var regexString = this.state.searchTerm;
-    var regexQuery = new RegExp("^"+regexString);
+    var regexQuery = new RegExp(regexString);
 
     if(this.state.searchTerm === ""){
       return {

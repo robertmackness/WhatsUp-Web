@@ -19,10 +19,19 @@ render() {
     return <div />;
   }
 
+  var imageUrl = "url(conversationBubble" + (Math.floor(Math.random() * 9) + 1) + ".png)";
+  var backgroundImageStyle = {
+    backgroundImage: imageUrl
+  };
+
   return (
-    <div className="username-tab" ref="usernameTab" 
+    <div className="username-tab-wrapper" ref="usernameTab" style={backgroundImageStyle} 
                   onClick={this.clicked} onMouseEnter={this.mouseEnter} onMouseLeave={this.mouseLeave}>
-      <p>{this.props.user.username}</p>
+      
+      <div className="username-tab-username">
+        <strong>{this.props.user.username}</strong>
+      </div>
+
     </div>
     );
 }

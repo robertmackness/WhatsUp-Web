@@ -103,8 +103,18 @@ height: 100%;
   margin-top: 20px;
 }
 
-.username-tab{
+.username-tab-wrapper{
 background-color: #ffffff;
+background-repeat: no-repeat;
+background-position: 5% center;
+height: 72px;
+}
+
+.username-tab-username{
+  font-size: 16px !important;
+  padding-left: 75px;
+  padding-top: 20px;
+
 }
 
 .panel-navigation-buttons{
