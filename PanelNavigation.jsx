@@ -43,7 +43,7 @@ PanelNavigation = React.createClass({
 
 render() {
   return(
-    <div className="col-sm-4 panel-navigation panel panel-default">
+    <div className="col-xs-4 col-md-4 panel-navigation panel panel-default">
       
       <div className="panel-headings row">
         <div className="panel-navigation-buttons">

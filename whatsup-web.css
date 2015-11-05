@@ -54,16 +54,11 @@ margin: 0px !important;
 .panel-headings {
   background-color: #eeeeee;
   color: #434343;
-  text-align: right;
+  text-align: left;
   width: 100%;
   height: 60px;
   margin: 0 auto;
 } 
-
-#render-target > div > div > div.row.row-panels > div.col-sm-8.panel-chat.panel.panel-default > div.panel-headings > h1{
-  margin: 0px;
-  font-size: 22px ;
-}
 
 .panel-default{
 margin: 0px;
@@ -135,40 +130,33 @@ height: 100%;
 }
 
 
-.panel-chat {
-background-color: #ede9e4;
-background-image: url("chatBackground.png");
-color: #434343;
-height: 100%;
-}
 
-.new-message {
-width: 96%;
-background-color: #ffffff;
-color: #434343;
-margin-left: 2%;
-margin-right: 2%;
-margin-bottom: 10px;
-margin-top: 10px;
-font-size: 14px;
-}
 
 /** 
   ###### PANEL STYLING - CHAT ############################
 */
 
-#render-target > div > div > div.row.row-panels > div.col-sm-8.panel-chat.panel.panel-default > div.panel-headings {
+#render-target > div > div > div.row.row-panels > div.col-xs-8.col-md-8.panel-chat.panel.panel-default > div.panel-headings {
   background-image: url("conversationBubble.png");
   background-repeat: no-repeat;
   background-size: 40px 40px;
   background-position: 5% center;
 }
 
+
+#render-target > div > div > div.row.row-panels > div.col-sm-8.col-md-8.panel-chat.panel.panel-default > div.panel-headings {
+  text-align: left;
+}
+
+#render-target > div > div > div.row.row-panels > div.col-xs-8.col-md-8.panel-chat.panel.panel-default > div.panel-headings > div > p{
+  font-size: 14px;
+}
+
 .temporary-panel-chat-details{
 padding:10px 10px 10px 80px;
 }
 
-#render-target > div > div > div.row.row-panels > div.col-sm-8.panel-chat.panel.panel-default > div.panel-headings > div > p{
+#render-target > div > div > div.row.row-panels > div.col-sm-8.col-md-8.panel-chat.panel.panel-default > div.panel-headings > div > p{
 font-size: 12px !important;
 }
 
@@ -184,13 +172,6 @@ color: #434343;
 height: 100%;
 }
 
-#render-target > div > div > div.row.row-panels > div.col-sm-8.panel-chat.panel.panel-default > div.panel-headings {
-  text-align: left;
-}
-
-#render-target > div > div > div.row.row-panels > div.col-sm-8.panel-chat.panel.panel-default > div.panel-headings > p{
-  font-size: 14px;
-}
 
 .panel-chat .img {
   opacity: 0.6;

@@ -21,7 +21,7 @@ newMessageArray.push(newMessage);
 
 render() {
   return(
-    <div className="col-sm-8 panel-chat panel panel-default">
+    <div className="col-xs-8 col-md-8 panel-chat panel panel-default">
       <div className="panel-headings">
         <PanelChatHeader />
       </div>
