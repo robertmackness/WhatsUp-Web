@@ -43,8 +43,6 @@ PanelNavigation = React.createClass({
   setCurrentPrivateConversationId(partnerUserId){
     var partner = partnerUserId;
     var currentUser = Meteor.userId();
-
-    conversationId = "Empty";
     var conversationId = Conversations.find( { $and: [
                                                       {participants: { $in: [partner]}}, 
                                                       {participants: { $in: [currentUser]}}
@@ -52,10 +50,20 @@ PanelNavigation = React.createClass({
                                               groupChat: false
                                               },
                                               {limit: 1}
-                                            ).fetch();
+                                            );
 
-    console.log(conversationId);
-    conversationId = "Empty";
+    if(conversationId.count() <1 ){
+     console.log("Nothing found");
+     return
+    }
+
+    if(conversationId.count() == 1){
+     conversationId = conversationId.fetch()[0];
+
+     Meteor.call("setCurrentConversationId", conversationId._id)
+     console.log(Meteor.user().currentConversationId);
+    }
+
   },
 
 render() {

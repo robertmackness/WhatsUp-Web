@@ -3,6 +3,11 @@
 // #################
 if(Meteor.isServer) {
 
+  Accounts.onCreateUser(function(options, user) {
+    user.currentConversationId = 0;
+    return user;
+  });
+  
 }
 
 // MongoDB collection setup
@@ -32,6 +37,11 @@ if (Meteor.isClient) {
 // data store methods directly from the browser. These methods
 // need to be used to access the data store.
 Meteor.methods({
+
+  setCurrentConversationId(conversationId){
+    var currentUser = Meteor.userId();
+    Meteor.users.update({_id: currentUser} , {$set: {currentConversationId: conversationId}});
+  }
 
 });
 
