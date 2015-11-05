@@ -23,12 +23,7 @@ render() {
   return(
     <div className="col-sm-8 panel-chat panel panel-default">
       <div className="panel-headings">
-        <div className="temporary-panel-chat-details">
-          <strong className="temporary-panel-chat-header">
-            THE Manifest
-          </strong>
-          <p classname="temporary-panel-chat-header-detail">You, Matt, Owen</p> 
-        </div>
+        <PanelChatHeader />
       </div>
       <div className="panel-body">
         <p>{this.state.messages}</p>

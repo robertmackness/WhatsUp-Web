@@ -28,7 +28,7 @@ body {
 }
 
 .row {
-
+margin: 0px !important;
 }
 
 .col-sm-4 {
@@ -87,6 +87,8 @@ height: 100%;
 
 #search-bar-container{
  background-color: #fbfbfb;
+ height: 50px;
+ padding: 0px;
 }
 
 .accounts-ui-wrapper {
@@ -104,6 +106,10 @@ height: 100%;
 
 #login-buttons{
   margin-top: 20px;
+}
+
+.username-tab{
+background-color: #ffffff;
 }
 
 .panel-navigation-buttons{
