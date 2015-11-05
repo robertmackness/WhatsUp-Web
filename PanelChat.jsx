@@ -1,23 +1,27 @@
 PanelChat = React.createClass({
 
-getInitialState(){
-  return {
-    messages: []
-  }
-},
+
+  // Allow this React component to interact with MongoDB via Meteor
+  mixins: [ReactMeteorData],
+
+  getMeteorData(){    
+    var conversationId = this.getCurrentConversationId();
+    return {
+            messageArray: Messages.find({conversation: conversationId}).fetch()
+    }
+  },
 
 handleInput(newMessage){
-
-var newMessageArray = this.state.messages;
-newMessageArray.push(newMessage);
-
-  this.setState({
-    messages: newMessageArray
-  });
-
+  console.log(this.data.messageArray)
 },
 
+getCurrentConversationId(){
+  return Meteor.user()? Meteor.user().profile.currentConversationId : "";
+},
 
+renderMessages(){
+
+},
 
 render() {
   return(
@@ -26,7 +30,7 @@ render() {
         <PanelChatHeader />
       </div>
       <div className="panel-body">
-        <p>{this.state.messages}</p>
+        
       </div>
       <div className="panel-chat-input">
         <PanelChatBar onChatSubmit={this.handleInput}></PanelChatBar>

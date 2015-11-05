@@ -6,7 +6,7 @@ handleSubmit(event){
   var newMessage = "" + Meteor.user().username + ": " + ReactDOM.findDOMNode(this.refs.newMessage).value;
   this.props.onChatSubmit(newMessage);
   
-  React.findDOMNode(this.refs.newMessage).value = "";
+  ReactDOM.findDOMNode(this.refs.newMessage).value = "";
 
 },
 

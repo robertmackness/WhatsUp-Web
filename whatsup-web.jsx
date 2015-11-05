@@ -4,7 +4,9 @@
 if(Meteor.isServer) {
 
   Accounts.onCreateUser(function(options, user) {
-    user.currentConversationId = 0;
+    user.profile = {
+      currentConversationId : 0
+    }
     return user;
   });
   

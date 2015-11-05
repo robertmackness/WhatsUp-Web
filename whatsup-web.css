@@ -217,6 +217,17 @@ height: 500px;
   padding-left: 45px;
 }
 
+.message-bubble-current-user-wrapper{
+  background-color: #dcf8c6;
+  border-radius: 5px;
+}
+
+.message-bubble-other-user-wrapper{
+  background-color: #dcf8c6;
+  border-radius: 5px;
+  color: #35cd96 !important;
+}
+
 .btn {
   margin-left: 15px;
   background-color: #FFFF00;

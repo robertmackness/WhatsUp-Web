@@ -1,17 +1,53 @@
 Dashboard = React.createClass({
   
 
-  render() {
-    // Render Dashboard components
+  /**
+  checkAuthenticated(){
+
+    if (Meteor.user()){
+      this.renderDashboard()
+    } else { 
+      this.renderAuthentication() ;
+    }
+
+  },
+
+  renderDashboard(){
+      // Render Dashboard components
+      return (
+        <div className="container container-full">
+          <div className="row ">
+          </div>
+          <div className="row row-panels">
+            <PanelNavigation />
+            <PanelChat />
+          </div>
+        </div>
+      );
+  },
+
+  renderAuthentication(){
     return (
-      <div className="container container-full">
-        <div className="row ">
+        <div className="container container-full">
+            <div className="row">
+              <AccountsUIWrapper />
+            </div>
         </div>
-        <div className="row row-panels">
-          <PanelNavigation />
-          <PanelChat />
+      );
+  },
+*/
+  render() {
+    //return <div>{this.checkAuthenticated()}</div>;
+          // Render Dashboard components
+      return (
+        <div className="container container-full">
+          <div className="row ">
+          </div>
+          <div className="row row-panels">
+            <PanelNavigation />
+            <PanelChat />
+          </div>
         </div>
-      </div>
-    );
+      );
   }
 });
