@@ -219,14 +219,66 @@ height: 500px;
 
 .message-bubble-current-user-wrapper{
   background-color: #dcf8c6;
-  border-radius: 5px;
+  border-radius: 10px !important;
+  margin-left: 55%;
+  margin-right: 5%;
+  width: 40%;
+  box-shadow: 2px 2px 2px #888888;
+  padding-left: 8px;
+  padding-top: 8px;
+  margin-top: 20px;
+  color: black;
+}
+
+.message-bubble-current-user-wrapper > img{
+position: relative;
+right: -99.5%;
+}
+
+.message-bubble-current-user-wrapper > p{
+margin-bottom: 0px;
+}
+
+.message-bubble-current-user-dtg{
+  float:right !important;
+  color: gray;
+  padding-right: 10px;
+  font-size: 12px;
 }
 
 .message-bubble-other-user-wrapper{
-  background-color: #dcf8c6;
-  border-radius: 5px;
+  background-color: #ffffff;
+  border-radius: 10px !important;
   color: #35cd96 !important;
+  margin-right: 55%;
+  margin-left: 5%;
+  margin-top: 20px;
+  width: 40%;
+  box-shadow: 2px 2px 2px #888888;
+  padding-left: 8px;
+  padding-top: 8px;
 }
+.message-bubble-other-user-dtg{
+  float:right !important;
+  color: gray;
+  padding-right: 10px;
+  font-size: 12px;
+}
+
+.message-bubble-other-user-dtg > p{
+margin-bottom: 0px;
+}
+
+.message-bubble-other-user-wrapper > p{
+color: black;
+margin: 0px !important;
+}
+
+.message-bubble-other-user-wrapper > img{
+position: relative;
+left: -18px;
+}
+
 
 .btn {
   margin-left: 15px;
