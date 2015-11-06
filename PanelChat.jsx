@@ -12,8 +12,14 @@ PanelChat = React.createClass({
     }
   },
 
+  componentDidUpdate(){
+    var panelChat = ReactDOM.findDOMNode(this.refs.panelChatBody);
+    panelChat.scrollTop = panelChat.scrollHeight;
+  },
+
 handleInput(newMessage){
-  console.log(this.data.messageArray)
+  Meteor.call("addNewMessage", newMessage);
+  
 },
 
 getCurrentConversationId(){
@@ -41,11 +47,11 @@ render() {
       <div className="panel-headings">
         <PanelChatHeader conversationId={currentConversationId}/>
       </div>
-      <div className="panel-body">
+      <div className="panel-body panel-chat-body" ref="panelChatBody">
         {this.renderMessages()}
       </div>
-      <div className="panel-chat-input">
-        <PanelChatBar onChatSubmit={this.handleInput}></PanelChatBar>
+      <div className="panel-chat-input" >
+        <PanelChatBar onChatSubmit={this.handleInput} />
       </div>
     </div>
   );

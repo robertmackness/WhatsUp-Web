@@ -46,7 +46,16 @@ Meteor.methods({
   },
 
   getCurrentConversationParticipants(participantArray){
-    return Meteor.users.find( {_id: { $in: { participantArray } } } )
+    var userObjectArray =  Meteor.users.find( {_id: { $in: { participantArray } } } ).fetch();
+
+  },
+
+  addNewMessage(newMessage){
+    var currentUser = Meteor.userId();
+    var currentUsername = Meteor.user().username;
+    var currentConversationId = Meteor.user().profile.currentConversationId;
+    var currentTime = new Date();
+    Messages.insert({owner: currentUser, ownerName: currentUsername, text: newMessage, conversation: currentConversationId, createdAt: currentTime});
   }
 
 });

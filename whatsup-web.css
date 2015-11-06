@@ -71,6 +71,11 @@ padding: 0px;
   border: 1px solid #dbdbdb;
 }
 
+.panel-chat-body{
+  height: 85%;
+  overflow-y: auto !important;
+}
+
 /** 
   ###### PANEL STYLING - NAVIGATION ############################
 */
