@@ -16,7 +16,6 @@ PanelChatHeader = React.createClass({
       return <p>Loading...</p>
     } else {
             var participants = Meteor.users.find( {_id: { $in: this.data.conversation.participants } } ).fetch();
-            console.log(participants);
             return  participants.map(participant =>{
                         return <PanelChatHeaderUser participant={participant} />
                     });
@@ -31,11 +30,11 @@ PanelChatHeader = React.createClass({
     } else {
 
           return(
-            <div className="temporary-panel-chat-details">
-              <strong className="temporary-panel-chat-header">
+            <div className="panel-chat-details">
+              <strong className="panel-chat-header">
                 {this.data.conversation.title}
               </strong>
-              <div className="temporary-panel-chat-header-detail">
+              <div className="panel-chat-header-detail">
                 <p>{this.getParticipantsUsernames()}</p>
               </div> 
             </div>

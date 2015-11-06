@@ -153,24 +153,16 @@ height: 100%;
   background-position: 5% center;
 }
 
-
-#render-target > div > div > div.row.row-panels > div.col-sm-8.col-md-8.panel-chat.panel.panel-default > div.panel-headings {
-  text-align: left;
-}
-
-#render-target > div > div > div.row.row-panels > div.col-xs-8.col-md-8.panel-chat.panel.panel-default > div.panel-headings > div > p{
-  font-size: 14px;
-}
-
-.temporary-panel-chat-details{
+.panel-chat-details{
 padding:10px 10px 10px 80px;
+font-size: 14px;
 }
 
 #render-target > div > div > div.row.row-panels > div.col-sm-8.col-md-8.panel-chat.panel.panel-default > div.panel-headings > div > p{
 font-size: 12px !important;
 }
 
-.temporary-panel-chat-header{
+.panel-chat-header{
 margin-top: 10px;
 font-size: 16px !important;
 }
