@@ -7,7 +7,8 @@ PanelChat = React.createClass({
   getMeteorData(){    
     var conversationId = this.getCurrentConversationId();
     return {
-            messageArray: Messages.find({conversation: conversationId}).fetch()
+            messageArray: Messages.find({conversation: conversationId}).fetch(),
+            conversation: Conversations.findOne(conversationId)
     }
   },
 
@@ -32,10 +33,13 @@ renderMessages(){
 },
 
 render() {
+
+  var currentConversationId = this.getCurrentConversationId();
+
   return(
     <div className="col-xs-8 col-md-8 panel-chat panel panel-default">
       <div className="panel-headings">
-        <PanelChatHeader />
+        <PanelChatHeader conversationId={currentConversationId}/>
       </div>
       <div className="panel-body">
         {this.renderMessages()}

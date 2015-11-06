@@ -42,7 +42,11 @@ Meteor.methods({
 
   setCurrentConversationId(conversationId){
     var currentUser = Meteor.userId();
-    Meteor.users.update({_id: currentUser} , {$set: {currentConversationId: conversationId}});
+    Meteor.users.update({_id: currentUser} , {$set: {profile:{currentConversationId: conversationId}} });
+  },
+
+  getCurrentConversationParticipants(participantArray){
+    return Meteor.users.find( {_id: { $in: { participantArray } } } )
   }
 
 });

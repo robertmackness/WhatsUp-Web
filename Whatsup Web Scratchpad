@@ -3,6 +3,9 @@ user {
       	_id,
 	username,
 	currentConversationId: conversationId
+	profile : {
+							currentConversationId: conversationId
+						}
      }
 
 message {
@@ -42,15 +45,16 @@ if message.owner is currentUser then populate a messageBubbleMe component, else 
 test db seed
 ##################################
 
-db.conversations.insert({owners: ["rd9XLhoNAwxuYFDmk", "eYQud2osj9E9JqR2z"], title: "THE Manifest", participants:["rd9XLhoNAwxuYFDmk", "eYQud2osj9E9JqR2z"] });
+test   "rd9XLhoNAwxuYFDmk"
+test3  "crkNQzxge3wJgPe2v"
 
+db.conversations.insert({owners: ["rd9XLhoNAwxuYFDmk", "crkNQzxge3wJgPe2v"], title: "UN TRAPPOLA", participants:["rd9XLhoNAwxuYFDmk", "crkNQzxge3wJgPe2v"], groupChat: false });
+ObjectId("563c8a92452e078d70528bce")
 
-db.messages.insert({owner: "rd9XLhoNAwxuYFDmk", text: "Hello", conversation: ObjectId("563b37602207ac14ffa8bb74"), createdAt: 1});
+db.messages.insert({owner: "rd9XLhoNAwxuYFDmk", ownerName: "test", text: "Ayyyy lmao", conversation: ObjectId("563c8a92452e078d70528bce"), createdAt: "13:40"});
+db.messages.insert({owner: "rd9XLhoNAwxuYFDmk", ownerName: "test", text: "whatuppp", conversation: ObjectId("563c8a92452e078d70528bce"), createdAt: "13:50"});
+db.messages.insert({owner: "crkNQzxge3wJgPe2v", ownerName: "test3",text: "Hello", conversation: ObjectId("563c8a92452e078d70528bce"), createdAt: "13:40"});
 
-db.messages.insert({owner: "rd9XLhoNAwxuYFDmk", text: "Omg it werkz", conversation: ObjectId("563b37602207ac14ffa8bb74"), createdAt: 2});
-
-db.messages.insert({owner: "eYQud2osj9E9JqR2z", text: "Testing 1 2 3", conversation: ObjectId("563b37602207ac14ffa8bb74"), createdAt: 3});
-
+db.messages.update({owner: "crkNQzxge3wJgPe2v"}, {$set: {ownerName: "test3"}});
 
 ########## scratch ###############
-
