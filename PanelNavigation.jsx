@@ -26,6 +26,10 @@ PanelNavigation = React.createClass({
     };
   },
 
+componentDidUpdate(){
+  Meteor.call("setCurrentConversationId", conversationId._id)
+},
+
   setSearchTerm(term){
     this.setState({
       searchTerm: term
@@ -53,15 +57,14 @@ PanelNavigation = React.createClass({
                                             );
 
     if(conversationId.count() <1 ){
-     console.log("Nothing found");
-     return
+     // Add new conversation generation here
+     Meteor.call("createNewConversation", currentUser, partnerUserId);
     }
 
     if(conversationId.count() == 1){
      conversationId = conversationId.fetch()[0];
 
      Meteor.call("setCurrentConversationId", conversationId._id)
-     console.log(Meteor.user().currentConversationId);
     }
 
   },

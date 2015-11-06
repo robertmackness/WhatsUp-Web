@@ -56,6 +56,10 @@ Meteor.methods({
     var currentConversationId = Meteor.user().profile.currentConversationId;
     var currentTime = new Date();
     Messages.insert({owner: currentUser, ownerName: currentUsername, text: newMessage, conversation: currentConversationId, createdAt: currentTime});
+  },
+
+  createNewConversation(currentUser, partnerUserId){
+    Conversations.insert({owners: [partnerUserId, currentUser], title: "New Conversation", participants:[partnerUserId, currentUser], groupChat: false });
   }
 
 });
