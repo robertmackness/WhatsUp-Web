@@ -122,6 +122,19 @@ height: 72px;
 
 }
 
+.conversation-tab-wrapper{
+background-repeat: no-repeat;
+background-position: 5% center;
+height: 72px;
+}
+
+.conversation-tab-title{
+  font-size: 16px !important;
+  padding-left: 75px;
+  padding-top: 20px;
+
+}
+
 .panel-navigation-buttons{
 height: 100%;
 }

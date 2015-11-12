@@ -9,7 +9,7 @@ PanelNavigation = React.createClass({
 
     if(this.state.searchTerm === ""){
       return {
-        users: Meteor.users.find({username: 9999999999999999999999999})
+        currentConversations: Conversations.find({participants: {$in: [Meteor.userId()]}}).fetch()
       };
     }
 
@@ -26,22 +26,37 @@ PanelNavigation = React.createClass({
     };
   },
 
-componentDidUpdate(){
-  Meteor.call("setCurrentConversationId", conversationId._id)
+setSearchTermEmpty(){
+  this.setState({
+      searchTerm: ""
+    });
 },
 
   setSearchTerm(term){
     this.setState({
       searchTerm: term
     });
-    this.forceUpdate();
   },
 
-  renderSearchResults(){
-    return this.data.users.map(user => {
-      return <UsernameTab user={user} 
-                    setCurrentConversation={this.setCurrentPrivateConversationId} />
-    });
+  renderNavPane(){
+
+    if(this.state.searchTerm == ""){
+      return this.data.currentConversations.map(convo => {
+        return <ConversationTab convo={convo} 
+                      setCurrentConversation={this.setCurrentConversationId} 
+                          currentConversationId={Meteor.user().profile.currentConversationId} />
+                        
+      });
+    } else {
+      return this.data.users.map(user => {
+        return <UsernameTab user={user} 
+                      setCurrentConversation={this.setCurrentPrivateConversationId} />
+      });
+    }
+  },
+
+  setCurrentConversationId(conversationId){
+    Meteor.call("setCurrentConversationId", conversationId);
   },
 
   setCurrentPrivateConversationId(partnerUserId){
@@ -57,16 +72,17 @@ componentDidUpdate(){
                                             );
 
     if(conversationId.count() <1 ){
-     // Add new conversation generation here
+     // New conversation generation here
      Meteor.call("createNewConversation", currentUser, partnerUserId);
+     this.setSearchTermEmpty();
     }
 
     if(conversationId.count() == 1){
      conversationId = conversationId.fetch()[0];
 
-     Meteor.call("setCurrentConversationId", conversationId._id)
+     Meteor.call("setCurrentConversationId", conversationId._id);
+     this.setSearchTermEmpty();
     }
-
   },
 
 render() {
@@ -84,7 +100,7 @@ render() {
           <SearchBar setSearch={this.setSearchTerm} />
         </div>
         <div>
-          {this.renderSearchResults()}
+          {this.renderNavPane()}
         </div>
       </div>
 
