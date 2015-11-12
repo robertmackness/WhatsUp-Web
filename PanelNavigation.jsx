@@ -6,18 +6,19 @@ PanelNavigation = React.createClass({
   getMeteorData(){
     var regexString = this.state.searchTerm;
     var regexQuery = new RegExp(regexString);
+    var convoSubscription = Meteor.subscribe('conversations');
+    var usersSubscription = Meteor.subscribe('usersSearch')
 
     if(this.state.searchTerm === ""){
       return {
-        currentConversations: Conversations.find({participants: {$in: [Meteor.userId()]}}).fetch()
+        currentConversations: Conversations.find().fetch()
       };
+    } else {
+        return {
+          users: Meteor.users.find({username: {$regex: regexQuery, $options: 'i'}}).fetch(),
+          conversations: Conversations.find({title: {$regex: regexQuery, $options: 'i'}}).fetch(),
+        };
     }
-
-    return {
-        users: Meteor.users.find({username: {$regex: regexQuery, $options: 'i'}}).fetch(),
-        conversations: Conversations.find({title: {$regex: regexQuery, $options: 'i'}}).fetch(),
-    }
-
   },
 
  getInitialState() {
@@ -86,26 +87,28 @@ setSearchTermEmpty(){
   },
 
 render() {
-  return(
-    <div className="col-xs-4 col-md-4 panel-navigation panel panel-default">
-      
-      <div className="panel-headings row">
-        <div className="panel-navigation-buttons">
-          <AccountsUIWrapper />
-        </div>
-      </div>
 
-      <div className="panel-body" id="search-bar-container">
-        <div className="row">
-          <SearchBar setSearch={this.setSearchTerm} />
-        </div>
-        <div>
-          {this.renderNavPane()}
-        </div>
-      </div>
+          return(
+            <div className="col-xs-4 col-md-4 panel-navigation panel panel-default">
+          
+              <div className="panel-headings row">
+                <div className="panel-navigation-buttons">
+                  <AccountsUIWrapper />
+                </div>
+              </div>
 
-    </div>
-  );
+              <div className="panel-body" id="search-bar-container">
+                <div className="row">
+                  <SearchBar setSearch={this.setSearchTerm} />
+                </div>
+                <div>
+                  {this.renderNavPane()}
+                </div>
+              </div>
+
+            </div>
+        );
+  
 }
 
 });

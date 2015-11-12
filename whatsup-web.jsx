@@ -9,7 +9,29 @@ if(Meteor.isServer) {
     }
     return user;
   });
-  
+ 
+
+  Meteor.publish('conversations', function(){
+    var userId = this.userId;
+    var conversations = Conversations.find({participants: {$in: [userId]}});
+    return conversations;
+  });
+
+  Meteor.publish('currentConversation', function(conversationId){
+    var currentConversation = Conversations.find(conversationId);
+    return currentConversation;
+  });
+
+  Meteor.publish('messages', function(conversationId){
+    var messages = Messages.find({conversation: {$in: [conversationId]}});
+    return messages;
+  });
+
+  Meteor.publish('usersSearch', function(){
+    return Meteor.users.find();
+  });
+
+
 }
 
 // MongoDB collection setup
@@ -35,9 +57,6 @@ if (Meteor.isClient) {
 // Shared server/client methods
 // ############################
 
-// Adding Meteor.methods ensure that clients cannot call 
-// data store methods directly from the browser. These methods
-// need to be used to access the data store.
 Meteor.methods({
 
   setCurrentConversationId(conversationId){

@@ -6,7 +6,12 @@ PanelChat = React.createClass({
 
   getMeteorData(){    
     var conversationId = this.getCurrentConversationId();
+    var convoSubscription = Meteor.subscribe('currentConversation', conversationId);
+    var messageSubsciption = Meteor.subscribe('messages', conversationId);
+
     return {
+            messagesIsLoading: ! messageSubsciption.ready(),
+            conversationIsLoading: ! convoSubscription.ready(), 
             messageArray: Messages.find({conversation: conversationId}).fetch(),
             conversation: Conversations.findOne(conversationId)
     }
@@ -55,6 +60,8 @@ render() {
       </div>
     </div>
   );
+
+    
 }
 
 });

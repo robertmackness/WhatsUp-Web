@@ -5,7 +5,9 @@ PanelChatHeader = React.createClass({
 
   getMeteorData(){    
     var conversationId = this.props.conversationId;
+    var convoSubscription = Meteor.subscribe('currentConversation', conversationId);
     return {
+            conversationIsLoading: ! convoSubscription.ready(),
             conversation: Conversations.findOne(conversationId),
     }
   },
