@@ -19,7 +19,7 @@ PanelChatHeader = React.createClass({
     } else {
             var participants = Meteor.users.find( {_id: { $in: this.data.conversation.participants } } ).fetch();
             return  participants.map(participant =>{
-                        return <PanelChatHeaderUser participant={participant} />
+                        return <PanelChatHeaderUser participant={participant} key={participant._id} />
                     });
     }
   },

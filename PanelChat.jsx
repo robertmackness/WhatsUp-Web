@@ -35,9 +35,9 @@ renderMessages(){
 
   return this.data.messageArray.map((message) =>{
     if (message.owner === Meteor.userId()){
-      return <MessageBubbleCurrentUser message={message} />;
+      return <MessageBubbleCurrentUser message={message} key={message._id} />;
     } else {
-      return <MessageBubbleOtherUser message={message} />;
+      return <MessageBubbleOtherUser message={message} key={message._id} />;
     }
   })
 

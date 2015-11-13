@@ -27,11 +27,11 @@ PanelNavigation = React.createClass({
     };
   },
 
-setSearchTermEmpty(){
-  this.setState({
-      searchTerm: ""
-    });
-},
+  setSearchTermEmpty(){
+    this.setState({
+        searchTerm: ""
+      });
+  },
 
   setSearchTerm(term){
     this.setState({
@@ -74,13 +74,13 @@ setSearchTermEmpty(){
     }
   },
 
+  // Used as a prop for conversationtabs
   setCurrentConversationId(conversationId){
     Meteor.call("setCurrentConversationId", conversationId);
-    this.setState({
-      searchTerm: ""
-    });
+    this.setSearchTermEmpty();
   },
 
+  // Used as a prop for conversationtabs
   setCurrentPrivateConversationId(partnerUserId){
     var partner = partnerUserId;
     var currentUser = Meteor.userId();
