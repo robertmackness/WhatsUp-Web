@@ -31,6 +31,7 @@ PanelNavigation = React.createClass({
     this.setState({
         searchTerm: ""
       });
+    ReactDOM.findDOMNode(this.refs.searchBar).value = "";
   },
 
   setSearchTerm(term){
@@ -120,7 +121,7 @@ render() {
 
               <div className="panel-body" id="search-bar-container">
                 <div className="row">
-                  <SearchBar setSearch={this.setSearchTerm} />
+                  <SearchBar setSearch={this.setSearchTerm} ref="searchBar" />
                 </div>
                 <div>
                   {this.renderNavPane()}
