@@ -39,25 +39,46 @@ setSearchTermEmpty(){
     });
   },
 
+  renderCurrentConversations(){
+    return this.data.currentConversations.map(convo => {
+        return <ConversationTab convo={convo} key={convo._id}
+                      setCurrentConversation={this.setCurrentConversationId} 
+                          currentConversationId={Meteor.user().profile.currentConversationId} />                
+      });
+  },
+
+  renderUserSearch(){
+    return this.data.users.map(user => {
+        return <UsernameTab user={user} key={user._id}
+                      setCurrentConversation={this.setCurrentPrivateConversationId} />
+      });
+  },
+
+  renderConversationSearch(){
+    return this.data.conversations.map(convo => {
+        return <ConversationTab convo={convo} key={convo._id}
+                      setCurrentConversation={this.setCurrentConversationId} 
+                          currentConversationId={Meteor.user().profile.currentConversationId} />                
+      });
+  },
+
   renderNavPane(){
 
     if(this.state.searchTerm == ""){
-      return this.data.currentConversations.map(convo => {
-        return <ConversationTab convo={convo} 
-                      setCurrentConversation={this.setCurrentConversationId} 
-                          currentConversationId={Meteor.user().profile.currentConversationId} />
-                        
-      });
+      return this.renderCurrentConversations();
     } else {
-      return this.data.users.map(user => {
-        return <UsernameTab user={user} 
-                      setCurrentConversation={this.setCurrentPrivateConversationId} />
-      });
+      return (<div> {this.renderUserSearch()}
+                    {this.renderConversationSearch()}
+              </div>
+        );
     }
   },
 
   setCurrentConversationId(conversationId){
     Meteor.call("setCurrentConversationId", conversationId);
+    this.setState({
+      searchTerm: ""
+    });
   },
 
   setCurrentPrivateConversationId(partnerUserId){

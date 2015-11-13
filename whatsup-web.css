@@ -83,6 +83,7 @@ padding: 0px;
 background-color: #ffffff;
 color: #434343;
 height: 100%;
+overflow-y: auto !important
 }
 
 #search-bar-container{

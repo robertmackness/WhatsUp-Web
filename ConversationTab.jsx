@@ -1,13 +1,5 @@
 ConversationTab = React.createClass({
 
-componentWillMount(){
-  console.log("props convo id is: " + this.props.convo._id);
-  console.log("currentConvoId passed to convo is: " + this.props.currentConversationId);
-  if(this.props.convo._id === this.props.currentConversationId){
-    console.log("Match");
-  }
-},
-
 clicked(){
   this.props.setCurrentConversation(this.props.convo._id);
 },
@@ -41,7 +33,6 @@ backgroundStyleCurrent(){
 render() {
   
   if(this.props.convo._id === this.props.currentConversationId){
-    console.log("rendering currentConversationid")
       return (
         <div className="conversation-tab-wrapper" ref="convoTab" style={this.backgroundStyleCurrent()} 
                   onClick={this.clicked}>

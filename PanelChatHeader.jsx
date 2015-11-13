@@ -27,15 +27,13 @@ PanelChatHeader = React.createClass({
   editTitle(event){
     event.preventDefault();
     var newTitle = prompt("Please enter a new conversation title");
-    console.log(newTitle);
     Meteor.call('setConversationTitle', this.props.conversationId, newTitle);
     this.forceUpdate();
   },
 
   render(){
     
-    if(! this.data.conversation){
-      console.log("currently Null");
+    if(this.data.conversationIsLoading){
       return <div />
     } else {
 
