@@ -24,6 +24,14 @@ PanelChatHeader = React.createClass({
     }
   },
 
+  editTitle(event){
+    event.preventDefault();
+    var newTitle = prompt("Please enter a new conversation title");
+    console.log(newTitle);
+    Meteor.call('setConversationTitle', this.props.conversationId, newTitle);
+    this.forceUpdate();
+  },
+
   render(){
     
     if(! this.data.conversation){
@@ -36,6 +44,7 @@ PanelChatHeader = React.createClass({
               <strong className="panel-chat-header">
                 {this.data.conversation.title}
               </strong>
+              <a href="" onClick={this.editTitle}> Edit</a>
               <div className="panel-chat-header-detail">
                 <p>{this.getParticipantsUsernames()}</p>
               </div> 

@@ -53,9 +53,9 @@ if (Meteor.isClient) {
   });
 }
 
-// ############################
-// Shared server/client methods
-// ############################
+// ###############################################
+// Shared server/client methods for optimistic UI
+// ###############################################
 
 Meteor.methods({
 
@@ -79,6 +79,10 @@ Meteor.methods({
 
   createNewConversation(currentUser, partnerUserId){
     Conversations.insert({owners: [partnerUserId, currentUser], title: "New Conversation", participants:[partnerUserId, currentUser], groupChat: false });
+  },
+
+  setConversationTitle(conversationId, newTitle){
+    Conversations.update({_id: conversationId}, { $set: {title: newTitle}});
   }
 
 });
