@@ -19,7 +19,7 @@ render() {
     return <div />;
   }
 
-  var imageUrl = "url(conversationBubble" + (Math.floor(Math.random() * 9) + 1) + ".png)";
+  var imageUrl = "url(conversationBubble1.png)";
   var backgroundImageStyle = {
     backgroundImage: imageUrl
   };

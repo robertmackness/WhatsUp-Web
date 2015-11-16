@@ -13,7 +13,7 @@ mouseLeave(){
 },
 
 backgroundStyle(){
-  var imageUrl = "url(conversationBubble" + (Math.floor(Math.random() * 9) + 1) + ".png)";
+  var imageUrl = "url(conversationBubble1.png)";
   var backgroundStyles = {
     backgroundImage: imageUrl,
     backgroundColor: "#ffffff !important"
@@ -22,7 +22,7 @@ backgroundStyle(){
 },
 
 backgroundStyleCurrent(){
-  var imageUrl = "url(conversationBubble" + (Math.floor(Math.random() * 9) + 1) + ".png)";
+  var imageUrl = "url(conversationBubble1.png)";
   var backgroundStyles = {
     backgroundImage: imageUrl,
     backgroundColor: "#eeeeee !important"
