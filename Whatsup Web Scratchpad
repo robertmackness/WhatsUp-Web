@@ -4,7 +4,8 @@ user {
 	username,
 	currentConversationId: conversationId
 	profile : {
-							currentConversationId: conversationId
+							currentConversationId: conversationId,
+							imageURL: "image.png"
 						}
      }
 

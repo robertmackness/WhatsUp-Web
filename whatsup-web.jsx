@@ -1,7 +1,18 @@
+
+
 // #################
 // Server side code
 // #################
+
+// MongoDB collection setup
+Messages = new Mongo.Collection("messages");
+Conversations = new Mongo.Collection("conversations");
+
 if(Meteor.isServer) {
+
+  // Add indexing to relevant MongoDB collections
+  Conversations._ensureIndex({ participants: 1 });
+  Messages._ensureIndex({ owner: 1 });
 
   Accounts.onCreateUser(function(options, user) {
     user.profile = {
@@ -34,9 +45,6 @@ if(Meteor.isServer) {
 
 }
 
-// MongoDB collection setup
-Messages = new Mongo.Collection("messages");
-Conversations = new Mongo.Collection("conversations");
 
 // #################
 // Client side code
@@ -62,11 +70,6 @@ Meteor.methods({
   setCurrentConversationId(conversationId){
     var currentUser = Meteor.userId();
     Meteor.users.update({_id: currentUser} , {$set: {profile:{currentConversationId: conversationId}} });
-  },
-
-  getCurrentConversationParticipants(participantArray){
-    var userObjectArray =  Meteor.users.find( {_id: { $in: { participantArray } } } ).fetch();
-
   },
 
   addNewMessage(newMessage){
